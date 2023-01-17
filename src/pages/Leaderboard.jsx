@@ -118,7 +118,7 @@ else{
 placeholder="Search" className="Buscador" /><br />
 </label>
 
-<label>
+<label className="labelrang">
 <div className="rangos">
 Minimo<br />
 0 <input type="range" onChange={minGet} value={min} min="0" max="2000000" /><br />2000000
