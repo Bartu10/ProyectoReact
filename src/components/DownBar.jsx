@@ -1,6 +1,6 @@
 import Vectorrrss from "../images/Vectorrrss.png"
 import Vectorrrss2 from "../images/Vectorrrss-1.png"
-import insta from "../images/insta.png"
+import insta from "../images/Insta.png"
 
 const DownBar = () => {
     return(
