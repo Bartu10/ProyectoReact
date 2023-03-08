@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import IconUser from '../images/6378141.png'
 import pen from '../images/pen.png'
 import instagram from '../images/instagram.png'
@@ -10,7 +10,10 @@ import twitter from '../images/gorjeo.png'
 
 
 const Perfil = () => {
-  debugger
+  
+  const [edit, setEdit] = useState(false);
+  const [desc, setDesc] = useState("Escribe una Biografia")
+
   let registered = localStorage["formData"]
   if(registered == undefined) 
   {registered = {"username":"Invitado", "Pais":"ES", "edad":0  }}
@@ -18,8 +21,16 @@ const Perfil = () => {
     registered = JSON.parse(localStorage["formData"])
   }
 
+  const handleDesc = (e) =>{
+    setDesc(e.target.value)
+    }
   
-  
+
+  const handle = () =>{
+    edit ?
+  setEdit(false) : setEdit(true)
+  }
+
 
   return (
     <div className='perfil'>
@@ -31,15 +42,11 @@ const Perfil = () => {
     <div className="eloRank"><h3>ELO: 400</h3><img className='flag' src={`https://flagsapi.com/${registered["Pais"]}/shiny/64.png`}></img><h3>{`EDAD:${registered["edad"]}`}</h3><h3 className="rank">Principante</h3></div>
     <div className='infoPersonal'>
         <article>
-        <h4>Sobre mí: <img className="icons" src={pen} /></h4>
-        <span>Soy javier y juego al ajedrez desde Soy javier y juego al ajedrez desde 
-        Soy javier y juego al ajedrez desde Soy javier y juego al ajedrez desde 
-        Soy javier y juego al ajedrez desde Soy javier y juego al ajedrez desde 
-        Soy javier y juego al ajedrez desde Soy javier y juego al ajedrez desde 
-        Soy javier y juego al ajedrez desde Soy javier y juego al ajedrez desde 
-        Soy javier y juego al ajedrez desde Soy javier y juego al ajedrez desde 
-        Soy javier y juego al ajedrez desde Soy javier y juego al ajedrez desde 
-        </span>
+        <h4>Sobre mí: <img className="icons" onClick={handle} src={pen} /></h4>
+        { edit == false ? (
+        desc) : (<textarea value={desc} onChange={handleDesc} />
+        ) 
+}
         </article> 
         <article>
             <h4>Redes Sociales: <img className="icons" src={pen} /></h4>

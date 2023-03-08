@@ -50,27 +50,31 @@ const handleSubmit = (e) => {
 };
 
   return (
-    <div class="contactos">
+    <div className="Login">
     <section>
         <form className='form' onSubmit={handleSubmit}>
             <span>CONTACTO</span>
             <h4>Si tienes alguna duda, consulta o problema, 
                 puedes contactar con nosotros aqui</h4>
-          <label>Nombre Completo</label>
+          <label>Nombre
           <input type="text" name="firstname" value={name} onChange={getName} placeholder="Tu nombre..." />
-          <label>Sexo</label>
+          </label>
+          <label>Sexo
+
           <select id="sexo" name="sexo">
             <option value="hombre">Hombre</option>
             <option value="mujer">Mujer</option>
             <option value="otro">Otro</option>
             <option value="NotIntroduced">Prefiero No Decirlo</option>
           </select>
-          <label>Correo</label>
+          </label>
+          <label>Correo
           <input type="text" id="correo" name="correo" value={correo} onChange={getCorreo} placeholder="Ingrese su correo..." />
-      
-          <label for="subject">Problema</label>
+          </label>
+          <label for="subject">Problema
           <textarea id="problema" name="problema" value={text} onChange={getText} placeholder="Ingrese su problema..."></textarea>
           <br />
+          </label>
           <div className="sendClean"><button type="submit" value="Enviar" >Enviar</button></div>
         </form>
     </section>

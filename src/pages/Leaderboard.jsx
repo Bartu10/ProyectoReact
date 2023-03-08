@@ -63,7 +63,7 @@ else{
   },[modo])
 
   useEffect(() => {
-    getModes()
+    getModes(setModes)
   })
 
 
@@ -87,12 +87,9 @@ else{
 
   return (
     <div className="Leaderboard">
-<form>
-
-<label> 
-
 <h1>{modo}</h1>
-<select value={modo} onChange={handleChange}>
+ 
+<select className="modo" value={modo} onChange={handleChange}>
   <option value="battle">battle</option>
   <option value="daily">daily</option>
   <option value="daily960">daily960</option>
@@ -106,26 +103,26 @@ else{
   <option value="rush">rush</option>
   <option value="tactics">tactics</option>
 </select>
+
+<form>
+
+
+<label>
+<input value={search} onChange={searcher} type="text" 
+placeholder="Search" className="Buscador" />
 </label>
 
 <label>
 <h5>Solo Premium</h5><input onChange={premiumGet} value={premium} type="checkbox" />
-<br />
 </label>
 
-<label>
-<input value={search} onChange={searcher} type="text" 
-placeholder="Search" className="Buscador" /><br />
-</label>
 
 <label className="labelrang">
+<div className="bardata">{min} - {max}</div>
 <div className="rangos">
-Minimo<br />
+Minimo
 0 <input type="range" onChange={minGet} value={min} min="0" max="2000000" /><br />2000000
 </div>
-<br />
-{min} - {max} 
-<br />
 <div className="rangos">
 Maximo<br />
 0 <input type="range" onChange={maxGet} value={max} min="0" max="2000000" /><br />2000000
@@ -162,7 +159,7 @@ Maximo<br />
 
   <td><Link to={`/Leaderboard/${jugador.username}`}>{jugador.username}</Link></td>
 
-  <td><img src={jugador.avatar} /></td>
+  <td className="avatar"><img src={jugador.avatar} /></td>
 
   <td>{jugador.score}</td>
 
@@ -184,7 +181,7 @@ Maximo<br />
 
   <td><Link to={`/Leaderboard/${jugador.username}`}>{jugador.username}</Link></td>
 
-  <td><img src={jugador.avatar} /></td>
+  <td className="avatar"><img src={jugador.avatar} /></td>
 
   <td>{jugador.score}</td>
 

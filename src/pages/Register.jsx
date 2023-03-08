@@ -1,7 +1,7 @@
 import Select from 'react-select'
 import React, { useState, useMemo, useEffect } from 'react';
 import countryList from 'react-select-country-list'
-import { useNavigate } from 'react-router-dom'; 
+import { useNavigate } from 'react-router-dom';
 
 function RegisterForm() {
 
@@ -94,8 +94,9 @@ function RegisterForm() {
   };
 
   return (
-    <div className='Login'>
+    <div className='Login' id='Register'>
     <form onSubmit={handleSubmit}>
+    <span className='title'>Register</span>
       {inputError && <div className='error'>{inputError}</div>}
       <label>
         Name: 
@@ -113,36 +114,40 @@ function RegisterForm() {
       </label>
       <br />
       <label>
-        Hombre
       <input
         type="radio"
         value="hombre"
         checked={gender === 'hombre'}
         onChange={genderChanger}
       />
-      Mujer
+    
+      Hombre
       <input
         type="radio"
         value="mujer"
         checked={gender === 'mujer'}
         onChange={genderChanger}
       />
-      Otro
+      Mujer
       <input
         type="radio"
         value="otro"
         checked={gender === 'otro'}
         onChange={genderChanger}
       />
+      Otro
+
       </label>
       <br />
-      EDAD:{edad}
       <label>
+      EDAD: {edad}
         <input type="range" min={0}  max={100}  value={edad} name="edad" onChange={edadChanger} />
       </label>
       <br />
-      <Select options={Paises} className="SelectorPais" name="pais" onChange={countryChanger} />
-
+      <label>
+      <i className="fa-solid fa-flag"></i>
+      <Select options={Paises} className="SelectorPais" name="pais" onChange={countryChanger} placeholder="Seleccione pais..."/>
+</label>
 
       <button type="submit">Register</button>
     </form>

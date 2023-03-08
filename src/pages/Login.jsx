@@ -4,14 +4,10 @@ import { useNavigate } from 'react-router-dom';
 import { Link } from "react-router-dom"; 
 
 function RegisterForm() {
-  const [show, setShow] = useState(false);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
-  setTimeout(() => {
-    setShow(true);
-  }, 7000);
   
   const handleClick = () => {
     navigate("/");
@@ -50,21 +46,21 @@ function RegisterForm() {
     <div className='Login'>
       
     <form onSubmit={handleSubmit}>
-    <span>Login</span>
+    <span className='title'>Login</span>
     <br />
       <label>
-        Username: 
-        <input type="text" value={username} onChange={event => setUsername(event.target.value)} />
+        <i className="fa-solid fa-user"></i>
+        <input type="text" value={username} placeholder="Inserte username..." onChange={event => setUsername(event.target.value)} />
       </label>
       <br />
       <label>
-        Password:
-        <input type="password" value={password} onChange={event => setPassword(event.target.value)} />
+        <i className="fa-solid fa-lock"></i>
+        <input type="password" placeholder="Inserte password..." value={password} onChange={event => setPassword(event.target.value)} />
       </label>
       <br />
-      <button type="submit">Login</button>
+      <button type="submit" id="button">Login</button>
 
-      {show && <h3>No tienes cuenta?<Link to={`/Register`}> Registrarse </Link></h3>}
+      <h3><Link to={`/Register`} className="">No tienes cuenta? Registrarse </Link></h3>
     </form>
     </div>
   );
