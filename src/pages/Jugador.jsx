@@ -6,17 +6,17 @@ const Jugador = () => {
 
     const [Jugador, setJugador] = useState(null)
     const params = useParams()
-    let listado = JSON.parse(localStorage.getItem('listado')) || [];
+  
     function isInList(){
+      let listado = JSON.parse(localStorage.getItem('listado')) || [];
       for(let x in listado){
+        console.log(params.username)
         if (listado[x].username == params.username){
-        console.log("IS IN")
-        return true}
-        else{
-          return false
-        }
-
+        console.log(listado[x].username)
+        return true
       }
+      }
+      return false
     }
     const [isFavorite, setIsFavorite] = useState(isInList());
     
@@ -24,9 +24,13 @@ const Jugador = () => {
 
 
     function handleClick() {
+      let listado = JSON.parse(localStorage.getItem('listado')) || [];
       if (isFavorite) {
         for(let x in listado){
-          if (listado[x].username == params.username){
+          debugger
+          console.log(listado[x].username)
+          if (listado[x].username == params.username.toLowerCase()){
+            console.log(listado[x])
             listado.splice(listado[x],1)
             localStorage.setItem("listado",JSON.stringify(listado));
           } 
@@ -42,6 +46,7 @@ const Jugador = () => {
 
     useEffect(() => {
       getPlayer(params.username, setJugador)
+      
     }, [])
     return (
     <div className='Jugador'>

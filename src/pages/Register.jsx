@@ -97,7 +97,7 @@ function RegisterForm() {
     <div className='Login' id='Register'>
     <form onSubmit={handleSubmit}>
     <span className='title'>Register</span>
-      {inputError && <div className='error'>{inputError}</div>}
+      
       <label>
         Name: 
         <input type="text" name='name' onChange={nameChanger} />
@@ -148,7 +148,7 @@ function RegisterForm() {
       <i className="fa-solid fa-flag"></i>
       <Select options={Paises} className="SelectorPais" name="pais" onChange={countryChanger} placeholder="Seleccione pais..."/>
 </label>
-
+{inputError && <div className='error'>{inputError}</div>}
       <button type="submit">Register</button>
     </form>
     </div>

@@ -8,6 +8,7 @@ const Contacto = () => {
 const [correo, setCorreo] = useState('');
 const [text, setText] = useState('')
 const navigate = useNavigate();
+const [inputError, setInputError ] = useState('')
 
 const getName = (e) => {
 setName(e.target.value)
@@ -22,6 +23,7 @@ const getText = (e) => {
 }
 
 const handleClick = () => {
+  
   navigate("/");
 }
 
@@ -35,11 +37,11 @@ const handleSubmit = (e) => {
   const textRegex = /^[a-zA-Z0-9]+$/;
   // Test the entered username and password against the regular expressions
   if (!nameRegex.test(name)) {
-    alert('Invalid name');
+    setInputError('Invalid name');
   } else if (!correoRegex.test(correo)) {
-    alert('Invalid mail');
+    setInputError('Invalid mail');
   } else if (!textRegex.test(text)) {
-    alert('Invalid text');
+    setInputError('Invalid text');
   } 
   else {
     // If the username and password are valid, send a request to the server to create a new account
@@ -76,6 +78,7 @@ const handleSubmit = (e) => {
           <br />
           </label>
           <div className="sendClean"><button type="submit" value="Enviar" >Enviar</button></div>
+          {inputError && <div className='error'>{inputError}</div>}
         </form>
     </section>
     </div>

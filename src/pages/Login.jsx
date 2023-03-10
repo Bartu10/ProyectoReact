@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 function RegisterForm() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [inputError, setInputError ] = useState('')
   const navigate = useNavigate();
 
   
@@ -23,9 +24,9 @@ function RegisterForm() {
 
     // Test the entered username and password against the regular expressions
     if (!usernameRegex.test(username)) {
-      alert('Invalid username. Please use only letters and numbers.');
+      setInputError('Invalid username. Please use only letters and numbers.');
     } else if (!passwordRegex.test(password)) {
-      alert('Invalid password. Please use at least 8 characters, including one uppercase and one lowercase letter, and one number.');
+      setInputError('Invalid password. Please use at least 8 characters, including one uppercase and one lowercase letter, and one number.');
     }  else {
       // If the username and password are valid, send a request to the server to create a new account
       // ...
@@ -35,7 +36,7 @@ function RegisterForm() {
         handleClick()
       }
       else{
-        alert("Incorrect Password or Username")
+        setInputError("Incorrect Password or Username")
       }
       
 
@@ -59,6 +60,7 @@ function RegisterForm() {
       </label>
       <br />
       <button type="submit" id="button">Login</button>
+      {inputError && <div className='error'>{inputError}</div>}
 
       <h3><Link to={`/Register`} className="">No tienes cuenta? Registrarse </Link></h3>
     </form>
