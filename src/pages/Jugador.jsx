@@ -6,14 +6,29 @@ const Jugador = () => {
 
     const [Jugador, setJugador] = useState(null)
     const params = useParams()
-    const [isFavorite, setIsFavorite] = useState(localStorage.getItem(params.username) === 'true');
+    let listado = JSON.parse(localStorage.getItem('listado')) || [];
+    function isInList(){
+      for(let x in listado){
+        if (listado[x].username == params.username){
+        console.log("IS IN")
+        return true}
+        else{
+          return false
+        }
+
+      }
+    }
+    const [isFavorite, setIsFavorite] = useState(isInList());
+    
+    
+
 
     function handleClick() {
-      let listado = JSON.parse(localStorage.getItem('listado')) || [];
       if (isFavorite) {
         for(let x in listado){
-          if (listado[x].name == params.name){
-            listado.splice(listado[n],1)
+          if (listado[x].username == params.username){
+            listado.splice(listado[x],1)
+            localStorage.setItem("listado",JSON.stringify(listado));
           } 
         }
         
