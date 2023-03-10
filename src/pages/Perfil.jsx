@@ -23,6 +23,7 @@ const Perfil = () => {
 
   const handleDesc = (e) =>{
     setDesc(e.target.value)
+    localStorage.setItem("Descripcion", e.target.value)
     }
   
 
@@ -44,7 +45,7 @@ const Perfil = () => {
         <article>
         <h4>Sobre mí: <img className="icons" onClick={handle} src={pen} /></h4>
         { edit == false ? (
-        desc) : (<textarea value={desc} onChange={handleDesc} />
+          localStorage.getItem('Descripcion')) : (<textarea value={localStorage.getItem('clave')} onChange={handleDesc} />
         ) 
 }
         </article> 
