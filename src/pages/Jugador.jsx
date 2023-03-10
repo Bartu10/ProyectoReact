@@ -9,11 +9,18 @@ const Jugador = () => {
     const [isFavorite, setIsFavorite] = useState(localStorage.getItem(params.username) === 'true');
 
     function handleClick() {
+      let listado = JSON.parse(localStorage.getItem('listado')) || [];
       if (isFavorite) {
-        localStorage.removeItem(params.username);
+        for(let x in listado){
+          if (listado[x].name == params.name){
+            listado.splice(listado[n],1)
+          } 
+        }
+        
         setIsFavorite(false);
       } else {
-        localStorage.setItem("jugador", JSON.stringify(Jugador));
+        listado.push(Jugador)
+        localStorage.setItem("listado",JSON.stringify(listado));
         setIsFavorite(true);
       }
     }
